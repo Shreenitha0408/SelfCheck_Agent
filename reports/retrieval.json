@@ -1,0 +1,156 @@
+{
+ "musique": {
+  "bm25": {
+   "n": 100,
+   "recall@1": 0.244,
+   "recall@3": 0.447,
+   "recall@5": 0.527,
+   "recall@10": 0.683,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.08,
+   "all_gold@5": 0.14,
+   "all_gold@10": 0.36,
+   "step_recall@1": 0.679,
+   "step_recall@3": 0.887,
+   "step_recall@5": 0.94,
+   "step_recall@10": 0.977
+  },
+  "dense": {
+   "n": 100,
+   "recall@1": 0.312,
+   "recall@3": 0.595,
+   "recall@5": 0.667,
+   "recall@10": 0.841,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.23,
+   "all_gold@5": 0.34,
+   "all_gold@10": 0.61,
+   "step_recall@1": 0.823,
+   "step_recall@3": 0.958,
+   "step_recall@5": 0.97,
+   "step_recall@10": 0.996
+  },
+  "hybrid": {
+   "n": 100,
+   "recall@1": 0.305,
+   "recall@3": 0.528,
+   "recall@5": 0.606,
+   "recall@10": 0.761,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.14,
+   "all_gold@5": 0.24,
+   "all_gold@10": 0.45,
+   "step_recall@1": 0.796,
+   "step_recall@3": 0.943,
+   "step_recall@5": 0.966,
+   "step_recall@10": 1.0
+  },
+  "hybrid_rerank": {
+   "n": 100,
+   "recall@1": 0.342,
+   "recall@3": 0.545,
+   "recall@5": 0.63,
+   "recall@10": 0.763,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.17,
+   "all_gold@5": 0.26,
+   "all_gold@10": 0.49,
+   "step_recall@1": 0.868,
+   "step_recall@3": 0.97,
+   "step_recall@5": 0.989,
+   "step_recall@10": 1.0
+  }
+ },
+ "hotpotqa": {
+  "bm25": {
+   "n": 200,
+   "recall@1": 0.445,
+   "recall@3": 0.728,
+   "recall@5": 0.828,
+   "recall@10": 0.985,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.495,
+   "all_gold@5": 0.665,
+   "all_gold@10": 0.97
+  },
+  "dense": {
+   "n": 200,
+   "recall@1": 0.45,
+   "recall@3": 0.83,
+   "recall@5": 0.917,
+   "recall@10": 0.998,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.69,
+   "all_gold@5": 0.84,
+   "all_gold@10": 0.995
+  },
+  "hybrid": {
+   "n": 200,
+   "recall@1": 0.455,
+   "recall@3": 0.807,
+   "recall@5": 0.897,
+   "recall@10": 0.995,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.63,
+   "all_gold@5": 0.795,
+   "all_gold@10": 0.99
+  },
+  "hybrid_rerank": {
+   "n": 200,
+   "recall@1": 0.472,
+   "recall@3": 0.805,
+   "recall@5": 0.868,
+   "recall@10": 0.983,
+   "all_gold@1": 0.0,
+   "all_gold@3": 0.62,
+   "all_gold@5": 0.735,
+   "all_gold@10": 0.965
+  }
+ },
+ "qasper": {
+  "bm25": {
+   "n": 175,
+   "recall@1": 0.169,
+   "recall@3": 0.352,
+   "recall@5": 0.45,
+   "recall@10": 0.601,
+   "all_gold@1": 0.126,
+   "all_gold@3": 0.269,
+   "all_gold@5": 0.337,
+   "all_gold@10": 0.486
+  },
+  "dense": {
+   "n": 175,
+   "recall@1": 0.208,
+   "recall@3": 0.397,
+   "recall@5": 0.482,
+   "recall@10": 0.641,
+   "all_gold@1": 0.131,
+   "all_gold@3": 0.309,
+   "all_gold@5": 0.366,
+   "all_gold@10": 0.537
+  },
+  "hybrid": {
+   "n": 175,
+   "recall@1": 0.243,
+   "recall@3": 0.403,
+   "recall@5": 0.504,
+   "recall@10": 0.651,
+   "all_gold@1": 0.171,
+   "all_gold@3": 0.303,
+   "all_gold@5": 0.383,
+   "all_gold@10": 0.531
+  },
+  "hybrid_rerank": {
+   "n": 175,
+   "recall@1": 0.278,
+   "recall@3": 0.461,
+   "recall@5": 0.588,
+   "recall@10": 0.743,
+   "all_gold@1": 0.189,
+   "all_gold@3": 0.343,
+   "all_gold@5": 0.446,
+   "all_gold@10": 0.629
+  }
+ }
+}

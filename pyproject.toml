@@ -12,6 +12,10 @@ dependencies = [
   "pyarrow>=14",
   "pyyaml>=6",
   "tqdm>=4.60",
+  "numpy>=1.26",
+  "httpx>=0.27",
+  "rank-bm25>=0.2.2",
+  "fastembed>=0.4",
 ]
 
 [project.optional-dependencies]

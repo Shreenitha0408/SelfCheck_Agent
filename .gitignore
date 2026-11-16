@@ -9,3 +9,4 @@ data/processed/
 # LLM response cache
 .cache/
 .env
+runs/
