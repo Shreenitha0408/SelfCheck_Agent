@@ -31,6 +31,8 @@ Passages retrieved for the current sub-question:
 Tasks:
 1. Answer the current sub-question using ONLY the passages. Be concise (a short phrase).
    If the passages do not contain the answer, set "found" to false.
+   Also write "claim": one plain declarative sentence stating your answer as a fact
+   (e.g. "Beatrice Heuser was born in Bangkok."), or "" if not found.
 2. Decide what to do next:
    - if more information is needed for the main question, give the next simple sub-question
      (substitute earlier answers into it, e.g. write the actual name, not "#1"; never guess
@@ -42,7 +44,7 @@ Tasks:
      from the passages.
 
 Reply with JSON only:
-{{"step_answer": "...", "found": true, "evidence": [passage numbers used],
+{{"step_answer": "...", "found": true, "claim": "...", "evidence": [passage numbers used],
   "next_sub_question": "..." or null, "final_answer": "..." or null}}"""
 
 FORCE_FINAL_USER = """Main question: {question}

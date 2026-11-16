@@ -18,12 +18,12 @@ The point of the project is the **measurement**, not just the demo:
 |---|---|
 | 1. Data collection & preparation | ✅ done — see [DATA.md](DATA.md), [reports/data_stats.md](reports/data_stats.md) |
 | 2. Retrieval (chunking, embeddings, reranking) | ✅ done — [reports/retrieval.md](reports/retrieval.md) |
-| 3. Baseline agent (no verification) + run logs | 🟡 built + smoke-tested — [reports/baseline_smoke.md](reports/baseline_smoke.md); full runs pending |
-| 4. Correctness labelling (auto + LLM judge + human audit) | ⏳ |
-| 5. Verifier: NLI evidence check, LLM critic, self-consistency → calibrated confidence | ⏳ |
-| 6. Decision policy (accept / retry / flag / abstain / clarify) | ⏳ |
+| 3. Baseline agent (no verification) + run logs | 🟡 built + smoke-tested — [reports/baseline_smoke.md](reports/baseline_smoke.md); full runs in progress (`scripts/daily_run.sh`) |
+| 4. Correctness labelling (auto + LLM judge + human audit) | 🟡 code ready (`scripts/label_runs.py`) |
+| 5. Verifier: NLI evidence check, LLM critic, self-consistency → calibrated confidence | 🟡 code ready (`verify/`, `scripts/compute_signals.py`, `scripts/evaluate_verifier.py`) |
+| 6. Decision policy (accept / retry / flag / abstain / clarify) | 🟡 implemented (`verify/policy.py`), tested in the demo |
 | 7. Evaluation, ablations, perturbation stress tests | ⏳ |
-| 8. Deployment (FastAPI + Gradio on Hugging Face Spaces, Docker, CI) | ⏳ |
+| 8. Deployment (FastAPI + Gradio on Hugging Face Spaces, Docker, CI) | 🟡 app runs locally (`python app/app.py`); hosting pending |
 
 ## Data
 

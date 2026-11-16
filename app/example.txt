@@ -1,0 +1,9 @@
+Orbis Research Group was founded in 2014 in Lisbon by the physicist Marta Valente. The group studies low-power sensors for environmental monitoring.
+
+In 2019 Orbis opened a second lab in Tallinn. The Tallinn lab is led by Henrik Saar, who previously worked on battery chemistry at a university spin-off.
+
+The group's best-known device is the Kestrel-3 air-quality sensor, released in 2021. Kestrel-3 runs for 18 months on a single coin battery and reports particulate matter every ten minutes.
+
+Kestrel-3 was designed in the Tallinn lab. Its successor, Kestrel-4, is planned for 2027 and will add carbon-monoxide detection.
+
+Marta Valente stepped down as director in 2023. She was succeeded by Joana Prates, who had led the Lisbon sensor-calibration team since 2016.

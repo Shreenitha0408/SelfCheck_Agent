@@ -46,7 +46,7 @@ class LLMClient:
         self.model = model
         self.tpm_limit = tpm_limit
         cache_path.parent.mkdir(parents=True, exist_ok=True)
-        self._db = sqlite3.connect(cache_path, check_same_thread=False)
+        self._db = sqlite3.connect(cache_path, check_same_thread=False, timeout=60)
         self._db.execute("CREATE TABLE IF NOT EXISTS cache (key TEXT PRIMARY KEY, value TEXT)")
         self._lock = threading.Lock()
         self._window: deque[tuple[float, int]] = deque()

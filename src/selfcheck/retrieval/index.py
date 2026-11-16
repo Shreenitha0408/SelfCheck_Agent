@@ -65,10 +65,12 @@ def chunk_document(doc: dict, max_words: int = 180, overlap: int = 40) -> list[C
 
 
 class CorpusIndex:
-    def __init__(self, processed_dir: Path, dataset: str, cache_dir: Path = Path(".cache/emb"),
-                 max_words: int = 180, overlap: int = 40):
+    def __init__(self, processed_dir: Path | None, dataset: str, cache_dir: Path | None = Path(".cache/emb"),
+                 max_words: int = 180, overlap: int = 40, docs: list[dict] | None = None):
         self.dataset = dataset
-        docs = [json.loads(l) for l in open(processed_dir / dataset / "corpus.jsonl")]
+        if docs is None:
+            assert processed_dir is not None
+            docs = [json.loads(l) for l in open(processed_dir / dataset / "corpus.jsonl")]
         self.chunks: list[Chunk] = [c for d in docs for c in chunk_document(d, max_words, overlap)]
         self.by_doc: dict[str, list[int]] = {}
         for i, c in enumerate(self.chunks):
@@ -95,16 +97,33 @@ class CorpusIndex:
             self._reranker = TextCrossEncoder(RERANK_MODEL)
         return self._reranker
 
-    def _load_embeddings(self, cache_dir: Path) -> np.ndarray:
+    @classmethod
+    def from_documents(cls, docs: list[dict], name: str = "user") -> "CorpusIndex":
+        """In-memory index over user-supplied documents (used by the demo app; no disk cache)."""
+        return cls(None, name, cache_dir=None, docs=docs)
+
+    def _embed(self, texts: list[str]) -> np.ndarray:
+        v = np.asarray(list(self.embedder.embed(texts, batch_size=64)), dtype=np.float32)
+        return v / (np.linalg.norm(v, axis=1, keepdims=True) + 1e-12)
+
+    def _load_embeddings(self, cache_dir: Path | None) -> np.ndarray:
+        if cache_dir is None:
+            return self._embed([f"{c.title}. {c.text}" for c in self.chunks]) if self.chunks else np.zeros((0, 384), np.float32)
         cache_dir.mkdir(parents=True, exist_ok=True)
         tag = EMBED_MODEL.replace("/", "_")
         vec_path, ids_path = cache_dir / f"{self.dataset}_{tag}.npy", cache_dir / f"{self.dataset}_{tag}.ids"
         ids = [c.chunk_id for c in self.chunks]
-        if vec_path.exists() and ids_path.exists() and ids_path.read_text().split("\n") == ids:
-            return np.load(vec_path)
-        texts = [f"{c.title}. {c.text}" for c in self.chunks]
-        vecs = np.asarray(list(self.embedder.embed(texts, batch_size=64)), dtype=np.float32)
-        vecs /= np.linalg.norm(vecs, axis=1, keepdims=True) + 1e-12
+        cached: dict[str, np.ndarray] = {}
+        if vec_path.exists() and ids_path.exists():
+            old_ids, old_vecs = ids_path.read_text().split("\n"), np.load(vec_path)
+            if old_ids == ids:
+                return old_vecs
+            cached = dict(zip(old_ids, old_vecs))  # chunk ids are content hashes -> safe to reuse
+        missing = [i for i, cid in enumerate(ids) if cid not in cached]
+        if missing:
+            new = self._embed([f"{self.chunks[i].title}. {self.chunks[i].text}" for i in missing])
+            cached.update({ids[i]: v for i, v in zip(missing, new)})
+        vecs = np.stack([cached[cid] for cid in ids]).astype(np.float32)
         np.save(vec_path, vecs)
         ids_path.write_text("\n".join(ids))
         return vecs

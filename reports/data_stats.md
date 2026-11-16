@@ -8,16 +8,16 @@ Source pool: 4834 questions
 
 | | pool | dev | test |
 |---|---|---|---|
-| Questions | 4834 | 200 | 500 |
+| Questions | 4834 | 100 | 300 |
 | Answerable | 50.0% | 50.0% | 50.0% |
 | Ambiguous | 0.0% | 0.0% | 0.0% |
 | Answer type | none: 50%, span: 50% | none: 50%, span: 50% | none: 50%, span: 50% |
-| Hops | 2: 52%, 3: 31%, 4: 17% | 2: 52%, 3: 31%, 4: 17% | 2: 52%, 3: 32%, 4: 17% |
-| Question length (words, mean) | 18.1 | 18.4 | 18.0 |
+| Hops | 2: 52%, 3: 31%, 4: 17% | 2: 52%, 3: 32%, 4: 16% | 2: 52%, 3: 31%, 4: 17% |
+| Question length (words, mean) | 18.1 | 18.0 | 17.8 |
 | Passages per question (mean) | 20.0 | 20.0 | 20.0 |
 | Passages per question (max) | 20 | 20 | 20 |
-| Passage length (words, median) | 69.0 | 66 | 69.5 |
-| Gold evidence passages (mean, answerable) | 2.65 | 2.65 | 2.65 |
+| Passage length (words, median) | 69.0 | 68 | 71 |
+| Gold evidence passages (mean, answerable) | 2.65 | 2.64 | 2.65 |
 | Answerable Qs with text evidence | 100.0% | 100.0% | 100.0% |
 | Has gold step decomposition | 100.0% | 100.0% | 100.0% |
 
@@ -27,16 +27,16 @@ Source pool: 7405 questions
 
 | | pool | dev | test |
 |---|---|---|---|
-| Questions | 7405 | 200 | 500 |
+| Questions | 7405 | 100 | 300 |
 | Answerable | 100.0% | 100.0% | 100.0% |
 | Ambiguous | 0.0% | 0.0% | 0.0% |
-| Answer type | span: 94%, yesno: 6% | span: 93%, yesno: 7% | span: 94%, yesno: 6% |
+| Answer type | span: 94%, yesno: 6% | span: 92%, yesno: 8% | span: 95%, yesno: 5% |
 | HotpotQA type | bridge: 80%, comparison: 20% | bridge: 80%, comparison: 20% | bridge: 80%, comparison: 20% |
 | HotpotQA level | hard: 100% | hard: 100% | hard: 100% |
-| Question length (words, mean) | 15.7 | 15.9 | 15.7 |
-| Passages per question (mean) | 10.0 | 9.9 | 9.9 |
+| Question length (words, mean) | 15.7 | 15.9 | 15.8 |
+| Passages per question (mean) | 10.0 | 10 | 10.0 |
 | Passages per question (max) | 10 | 10 | 10 |
-| Passage length (words, median) | 80.0 | 79.0 | 78.0 |
+| Passage length (words, median) | 80.0 | 83.0 | 79.0 |
 | Gold evidence passages (mean, answerable) | 2 | 2 | 2 |
 | Answerable Qs with text evidence | 100.0% | 100.0% | 100.0% |
 | Has gold step decomposition | 0.0% | 0.0% | 0.0% |
@@ -47,17 +47,17 @@ Source pool: 2456 questions
 
 | | pool | dev | test |
 |---|---|---|---|
-| Questions | 2456 | 200 | 500 |
-| Answerable | 90.7% | 90.5% | 90.8% |
+| Questions | 2456 | 100 | 300 |
+| Answerable | 90.7% | 90.0% | 90.7% |
 | Ambiguous | 0.0% | 0.0% | 0.0% |
-| Answer type | free: 25%, none: 9%, span: 52%, yesno: 13% | free: 26%, none: 10%, span: 53%, yesno: 12% | free: 24%, none: 9%, span: 52%, yesno: 15% |
-| Distinct papers | 697 | 143 | 294 |
-| Question length (words, mean) | 7.9 | 8.0 | 7.9 |
-| Passages per question (mean) | 47.3 | 48.3 | 46.6 |
-| Passages per question (max) | 288 | 287 | 175 |
-| Passage length (words, median) | 64 | 62.0 | 64.0 |
-| Gold evidence passages (mean, answerable) | 2.2 | 2.01 | 2.47 |
-| Answerable Qs with text evidence | 95.3% | 96.7% | 96.5% |
+| Answer type | free: 25%, none: 9%, span: 52%, yesno: 13% | free: 26%, none: 10%, span: 53%, yesno: 11% | free: 24%, none: 9%, span: 52%, yesno: 15% |
+| Distinct papers | 697 | 86 | 219 |
+| Question length (words, mean) | 7.9 | 7.7 | 7.7 |
+| Passages per question (mean) | 47.3 | 48.8 | 47.1 |
+| Passages per question (max) | 288 | 194 | 175 |
+| Passage length (words, median) | 64 | 65 | 63.0 |
+| Gold evidence passages (mean, answerable) | 2.2 | 2.3 | 2.34 |
+| Answerable Qs with text evidence | 95.3% | 94.4% | 96.7% |
 | Has gold step decomposition | 0.0% | 0.0% | 0.0% |
 
 ## ambigqa
@@ -66,14 +66,14 @@ Source pool: 2002 questions
 
 | | pool | dev | test |
 |---|---|---|---|
-| Questions | 2002 | 100 | 200 |
+| Questions | 2002 | 100 | 300 |
 | Answerable | 100.0% | 100.0% | 100.0% |
-| Ambiguous | 53.4% | 53.0% | 53.5% |
+| Ambiguous | 53.4% | 53.0% | 53.3% |
 | Answer type | span: 100% | span: 100% | span: 100% |
-| Question length (words, mean) | 9.0 | 8.7 | 9.0 |
-| Passages per question (mean) | 20.7 | 18.9 | 21.2 |
-| Passages per question (max) | 102 | 87 | 97 |
-| Passage length (words, median) | 39 | 39.5 | 38.0 |
+| Question length (words, mean) | 9.0 | 9.1 | 9.1 |
+| Passages per question (mean) | 20.7 | 20.2 | 21.0 |
+| Passages per question (max) | 102 | 71 | 83 |
+| Passage length (words, median) | 39 | 39 | 39 |
 | Gold evidence passages (mean, answerable) | 0 | 0 | 0 |
 | Answerable Qs with text evidence | 0.0% | 0.0% | 0.0% |
 | Has gold step decomposition | 0.0% | 0.0% | 0.0% |

@@ -26,6 +26,14 @@ from selfcheck.retrieval.index import CorpusIndex  # noqa: E402
 GENERATOR = "openai/gpt-oss-20b"
 
 
+def compact(trace: dict) -> dict:
+    """Drop passage text from logs (recoverable from corpus.jsonl via chunk_id) to keep runs small."""
+    for s in trace["steps"]:
+        for r in s.get("retrieved", []):
+            r.pop("text", None)
+    return trace
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dataset", required=True)
@@ -47,14 +55,16 @@ def main() -> None:
 
     todo = [e for e in exs if e["qid"] not in done]
     print(f"{len(done)} done, {len(todo)} to run")
+    quota_hit = False
     with open(out_path, "a") as f:
         for i, e in enumerate(todo):
             try:
                 t = agent.run(e["qid"], e["question"], e["scope_doc_ids"])
             except DailyQuotaExceeded as err:
                 print(f"\nDaily quota reached after {i} questions; re-run later to resume.\n{err}")
+                quota_hit = True
                 break
-            rec = t.to_dict() | {"dataset": args.dataset, "split": args.split, "model": args.model,
+            rec = compact(t.to_dict()) | {"dataset": args.dataset, "split": args.split, "model": args.model,
                                  "score": score_final(t.final_answer, e)}
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             f.flush()
@@ -68,6 +78,8 @@ def main() -> None:
               f"EM={mean(r['score']['em'] for r in rows):.3f} F1={mean(r['score']['f1'] for r in rows):.3f} "
               f"abstain={mean(r['abstained'] for r in rows):.2f} calls/q={mean(r['n_calls'] for r in rows):.1f} "
               f"tokens/q={mean(r['tokens'] for r in rows):.0f}")
+    if quota_hit:
+        sys.exit(3)
 
 
 if __name__ == "__main__":

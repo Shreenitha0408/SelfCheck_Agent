@@ -85,6 +85,7 @@ class DocQAAgent:
                            "score": p.score} for p in passages],
             "answer": str(j.get("step_answer") or "").strip(),
             "found": bool(j.get("found", False)),
+            "claim": str(j.get("claim") or "").strip(),
             "cited_chunk_ids": cited,
             "next_sub_question": j.get("next_sub_question"),
             "final_answer": j.get("final_answer"),
