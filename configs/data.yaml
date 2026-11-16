@@ -1,0 +1,28 @@
+# Data collection config. All sampling is deterministic given `seed`.
+seed: 13
+raw_dir: data/raw
+processed_dir: data/processed
+splits_dir: data/splits
+reports_dir: reports
+
+# dev  = used ONLY for tuning thresholds / fitting the confidence combiner
+# test = held out, run once for the reported numbers
+# Sizes are kept moderate because every question costs several LLM calls
+# (generator + critic + self-consistency samples) on Groq's free tier.
+datasets:
+  musique:
+    dev: 200
+    test: 500
+    stratify_by: [answerable, hops]
+  hotpotqa:
+    dev: 200
+    test: 500
+    stratify_by: [hotpot_type, hotpot_level]
+  qasper:
+    dev: 200
+    test: 500
+    stratify_by: [answer_type]
+  ambigqa:
+    dev: 100
+    test: 200
+    stratify_by: [ambiguous]
